@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050907">
+<title>Sunny Jangid | Cybersecurity Portfolio</title>
+<meta name="description" content="Sunny Jangid's cybersecurity, programming and technology learning portfolio.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg:#050907;
+  --panel:#0a120e;
+  --green:#00ff9c;
+  --white:#e9fff4;
+  --muted:#91a99c;
+  --border:rgba(0,255,156,.23);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{background:var(--bg);color:var(--white);font-family:'Rajdhani',sans-serif;overflow-x:hidden}
+
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background-image:
+  linear-gradient(rgba(0,255,156,.035) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(0,255,156,.035) 1px,transparent 1px);
+  background-size:35px 35px;
+}
+
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+
+/* NAVBAR */
+.navbar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(5,9,7,.95);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:1200px;margin:auto;padding:17px 25px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.logo{
+  color:var(--green);font-family:'Share Tech Mono',monospace;
+  font-size:24px;font-weight:bold;letter-spacing:2px;
+}
+.logo span{color:white}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-links a{color:var(--muted);font-size:16px}
+.nav-links a:hover{color:var(--green)}
+.menu-btn{
+  display:none;color:var(--green);background:none;
+  border:1px solid var(--border);padding:7px 12px;font-size:22px;
+}
+
+/* HERO */
+.hero{
+  max-width:1200px;min-height:650px;margin:auto;padding:85px 25px;
+  display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;
+}
+.eyebrow{
+  display:inline-block;color:var(--green);
+  border:1px solid var(--border);padding:7px 12px;
+  font-family:'Share Tech Mono',monospace;font-size:11px;
+  letter-spacing:1px;margin-bottom:24px;
+}
+.hero h1{
+  font-size:clamp(42px,6vw,76px);
+  line-height:.98;text-transform:uppercase;
+}
+.green{color:var(--green)}
+.hero h2{
+  font-family:'Share Tech Mono',monospace;
+  font-size:clamp(17px,2.4vw,25px);margin:20px 0;
+}
+.typing{color:var(--green)}
+.cursor{
+  display:inline-block;width:9px;height:20px;
+  background:var(--green);margin-left:4px;
+  animation:blink .8s infinite;vertical-align:middle;
+}
+@keyframes blink{50%{opacity:0}}
+.hero p{
+  color:var(--muted);font-size:18px;line-height:1.7;max-width:540px;
+}
+.actions{display:flex;flex-wrap:wrap;gap:15px;margin-top:30px}
+.btn{
+  padding:12px 23px;border:1px solid var(--green);
+  color:var(--green);font-family:'Share Tech Mono',monospace;font-size:13px;
+  transition:.25s;
+}
+.btn.primary{color:#00190f;background:var(--green);font-weight:bold}
+.btn:hover{box-shadow:0 0 22px #00ff9c66;transform:translateY(-3px)}
+
+/* TERMINAL */
+.terminal{
+  border:1px solid var(--border);background:rgba(7,17,12,.92);
+  box-shadow:0 0 50px rgba(0,255,156,.10);
+  border-radius:8px;overflow:hidden;
+}
+.terminal-head{
+  display:flex;align-items:center;gap:7px;padding:13px 16px;
+  border-bottom:1px solid var(--border);
+  color:var(--muted);font-family:'Share Tech Mono',monospace;font-size:12px;
+}
+.circle{width:9px;height:9px;border-radius:50%;background:#ff6262}
+.circle:nth-child(2){background:#ffd166}
+.circle:nth-child(3){background:var(--green)}
+.terminal-body{
+  padding:24px;font-family:'Share Tech Mono',monospace;
+  font-size:13px;line-height:2;min-height:290px;
+}
+.command{color:var(--green)}
+.output{color:#9ab5a6}
+.success{color:#00ff9c}
+
+/* COMMON SECTIONS */
+section.content-section{
+  max-width:1200px;margin:auto;padding:85px 25px;
+}
+.section-label{
+  color:var(--green);font-family:'Share Tech Mono',monospace;
+  font-size:12px;letter-spacing:2px;margin-bottom:12px;
+}
+.section-title{
+  font-size:clamp(32px,4vw,48px);
+  margin-bottom:35px;text-transform:uppercase;
+}
+.panel{
+  background:linear-gradient(145deg,#0c1711,#080d0a);
+  border:1px solid var(--border);padding:28px;border-radius:7px;
+}
+.panel h3{
+  color:var(--green);font-family:'Share Tech Mono',monospace;
+  font-size:17px;margin-bottom:15px;
+}
+.panel p{color:var(--muted);font-size:18px;line-height:1.7}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px}
+.info-line{
+  display:flex;justify-content:space-between;gap:15px;
+  padding:12px 0;border-bottom:1px solid #ffffff12;font-size:16px;
+}
+.info-line span:first-child{color:var(--muted)}
+.info-line span:last-child{color:var(--green);text-align:right}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.skill{
+  background:var(--panel);border:1px solid var(--border);
+  padding:22px;transition:.25s;
+}
+.skill:hover{border-color:var(--green);transform:translateY(-5px)}
+.skill .icon{font-size:27px;margin-bottom:12px}
+.skill h3{color:var(--green);font-size:21px}
+.skill p{color:var(--muted);margin-top:7px;font-size:15px}
+
+/* LEARNING HUB */
+.learning-intro{
+  color:var(--muted);font-size:18px;line-height:1.6;
+  max-width:760px;margin-top:-18px;margin-bottom:25px;
+}
+.learning-controls{
+  display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;
+}
+.filter-btn{
+  background:#0a120e;color:var(--muted);
+  border:1px solid var(--border);padding:9px 16px;
+  font-family:'Share Tech Mono',monospace;font-size:12px;
+  transition:.2s;
+}
+.filter-btn:hover,.filter-btn.active{
+  background:var(--green);color:#00190f;border-color:var(--green);
+}
+.video-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+}
+.video-card{
+  background:var(--panel);border:1px solid var(--border);
+  overflow:hidden;transition:.25s;min-width:0;
+}
+.video-card:hover{
+  border-color:var(--green);transform:translateY(-4px);
+  box-shadow:0 8px 25px #00ff9c12;
+}
+.video-frame{
+  position:relative;aspect-ratio:16/9;background:#020604;
+}
+.video-frame iframe{width:100%;height:100%;border:0;display:block}
+.video-placeholder{
+  height:100%;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:8px;color:var(--green);
+  font-family:'Share Tech Mono',monospace;
+  background:radial-gradient(circle,#103322,#020604 70%);
+}
+.play{font-size:42px}
+.video-info{padding:17px}
+.video-meta{
+  display:flex;justify-content:space-between;gap:8px;
+  align-items:center;margin-bottom:9px;
+}
+.video-category{
+  font-family:'Share Tech Mono',monospace;
+  font-size:10px;color:var(--green);letter-spacing:1px;
+}
+.language-tag{
+  font-size:11px;padding:4px 8px;
+  border:1px solid var(--border);color:var(--muted);
+}
+.video-info h3{font-size:20px;line-height:1.2;margin-bottom:8px}
+.video-info p{font-size:14px;color:var(--muted);line-height:1.5;min-height:42px}
+.video-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.video-actions a{
+  font-family:'Share Tech Mono',monospace;font-size:11px;
+  color:var(--green);border:1px solid var(--border);padding:8px 10px;
+}
+.video-actions a:hover{background:var(--green);color:#00190f}
+.video-note{
+  margin-top:22px;padding:15px 18px;
+  border-left:2px solid var(--green);background:#00ff9c09;
+  color:var(--muted);font-size:14px;line-height:1.6;
+}
+.empty-state{
+  display:none;color:var(--muted);padding:25px;
+  border:1px dashed var(--border);text-align:center;
+}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.project{
+  border:1px solid var(--border);background:var(--panel);
+  padding:25px;transition:.25s;
+}
+.project:hover{border-color:var(--green)}
+.project-top{
+  display:flex;justify-content:space-between;color:var(--green);
+  font-family:'Share Tech Mono',monospace;font-size:12px;
+}
+.project h3{font-size:25px;margin:20px 0 10px}
+.project p{color:var(--muted);line-height:1.6}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tags span{
+  border:1px solid var(--border);padding:5px 9px;
+  color:var(--green);font-size:12px;
+}
+.project a{
+  display:inline-block;margin-top:20px;color:var(--green);
+  font-family:'Share Tech Mono',monospace;font-size:13px;
+}
+
+/* JOURNEY */
+.journey{border-left:2px solid var(--green);margin-left:8px;padding-left:25px}
+.journey-item{margin-bottom:28px;position:relative}
+.journey-item::before{
+  content:"";position:absolute;left:-32px;top:6px;
+  width:11px;height:11px;border-radius:50%;
+  background:var(--green);box-shadow:0 0 12px var(--green);
+}
+.journey-item h3{color:var(--green);font-size:21px}
+.journey-item p{color:var(--muted);margin-top:5px;font-size:16px}
+
+/* CONTACT */
+.contact-box{
+  text-align:center;border:1px solid var(--border);padding:55px 20px;
+  background:radial-gradient(ellipse at center,#00ff9c12,transparent 70%);
+}
+.contact-box p{
+  color:var(--muted);font-size:18px;
+  margin:15px auto 25px;max-width:550px;
+}
+.socials{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.socials a{border:1px solid var(--border);color:var(--green);padding:10px 18px;transition:.2s}
+.socials a:hover{background:var(--green);color:#00190f}
+.email-address{
+  color:var(--green);font-family:'Share Tech Mono',monospace;
+  font-size:14px;margin-top:20px;overflow-wrap:anywhere;
+}
+footer{
+  border-top:1px solid var(--border);text-align:center;padding:24px;
+  color:var(--muted);font-family:'Share Tech Mono',monospace;font-size:12px;
+}
+footer span{color:var(--green)}
+.reveal{opacity:0;transform:translateY(25px);transition:.7s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){.video-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:800px){
+  .hero{grid-template-columns:1fr;padding-top:60px;gap:35px}
+  .about-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-links{
+    display:none;position:absolute;top:65px;left:0;width:100%;
+    padding:20px;background:#07100b;border-bottom:1px solid var(--border);
+    flex-direction:column;
+  }
+  .nav-links.open{display:flex}
+  .menu-btn{display:block}
+}
+@media(max-width:600px){.video-grid{grid-template-columns:1fr}}
+@media(max-width:520px){
+  .projects-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr 1fr}
+  section.content-section{padding:65px 18px}
+  .hero{padding:55px 18px}
+  .terminal-body{font-size:11px;padding:17px}
+  .info-line{font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+<div class="nav-inner">
+<a class="logo" href="#home">&lt;DEV<span>/</span>&gt;</a>
+<button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+
+<div class="nav-links" id="navLinks">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#learning">Learning Hub</a>
+<a href="#projects">Projects</a>
+<a href="#journey">Journey</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
+</nav>
+
+<header class="hero" id="home">
+<div class="hero-text">
+<div class="eyebrow">CYBERSECURITY • DEVELOPMENT • LEARNING</div>
+<h1>SUNNY<br><span class="green">JANGID</span></h1>
+<h2>&gt; <span class="typing" id="typing"></span><span class="cursor"></span></h2>
+
+<p>
+I am learning cybersecurity, programming and technology.
+I enjoy understanding how systems work, building useful tools
+and exploring security through ethical, authorized practice.
+My journey is just getting started.
+</p>
+
+<div class="actions">
+<a href="#projects" class="btn primary">VIEW PROJECTS ↗</a>
+<a href="#about" class="btn">MY STORY</a>
+<a href="https://github.com/sunnyjangid1717-cmyk" class="btn" target="_blank" rel="noopener">GITHUB ↗</a>
+</div>
+</div>
+
+<div class="terminal">
+<div class="terminal-head">
+<span class="circle"></span><span class="circle"></span><span class="circle"></span>
+<span style="margin-left:10px">profile.sh — terminal</span>
+</div>
+<div class="terminal-body">
+<div class="command">$ whoami</div>
+<div class="output">Sunny Jangid — Cybersecurity Learner</div>
+<br>
+<div class="command">$ interests --list</div>
+<div class="output">[+] Cybersecurity fundamentals</div>
+<div class="output">[+] Python & C++</div>
+<div class="output">[+] Linux & Networking</div>
+<div class="output">[+] Electronics & IoT</div>
+<br>
+<div class="command">$ system_status</div>
+<div class="success">Learning: ACTIVE</div>
+<div class="success">Curiosity: UNLIMITED</div>
+<div class="success">Mission: KEEP BUILDING_</div>
+</div>
+</div>
+</header>
+
+<section class="content-section reveal" id="about">
+<div class="section-label">01 / ABOUT ME</div>
+<h2 class="section-title">WHO <span class="green">AM I?</span></h2>
+
+<div class="about-grid">
+<div class="panel">
+<h3>// MY INTRODUCTION</h3>
+<p>
+Hello! I am a technology enthusiast interested in cybersecurity,
+software development, Linux and electronics. I believe in learning
+concepts by experimenting, building projects and understanding
+the technology behind them.
+<br><br>
+I am currently developing my programming and cybersecurity
+foundations, one project at a time.
+</p>
+</div>
+
+<div class="panel">
+<h3>// PROFILE DATA</h3>
+<div class="info-line"><span>Name</span><span>Sunny Jangid</span></div>
+<div class="info-line"><span>Role</span><span>Learner / Developer</span></div>
+<div class="info-line"><span>Focus</span><span>Cybersecurity</span></div>
+<div class="info-line"><span>Languages</span><span>Python / C++</span></div>
+<div class="info-line"><span>Environment</span><span>Linux / Windows</span></div>
+<div class="info-line"><span>Mindset</span><span>Always Learning</span></div>
+</div>
+</div>
+</section>
+
+<section class="content-section reveal" id="skills">
+<div class="section-label">02 / TECH STACK</div>
+<h2 class="section-title">MY <span class="green">SKILLS</span></h2>
+
+<div class="skills-grid">
+<div class="skill"><div class="icon">⌨️</div><h3>Python</h3><p>Programming fundamentals and scripting.</p></div>
+<div class="skill"><div class="icon">💻</div><h3>C++</h3><p>Learning object-oriented programming.</p></div>
+<div class="skill"><div class="icon">🐧</div><h3>Linux</h3><p>Command line and operating system basics.</p></div>
+<div class="skill"><div class="icon">🌐</div><h3>Networking</h3><p>Learning network protocols and fundamentals.</p></div>
+<div class="skill"><div class="icon">🛡️</div><h3>Cybersecurity</h3><p>Security concepts and authorized lab practice.</p></div>
+<div class="skill"><div class="icon">⚡</div><h3>Electronics</h3><p>Exploring microcontrollers and IoT projects.</p></div>
+</div>
+</section>
+
+<!-- LEARNING HUB -->
+<section class="content-section reveal" id="learning">
+<div class="section-label">03 / VIDEO LIBRARY</div>
+<h2 class="section-title">LEARNING <span class="green">HUB</span></h2>
+
+<p class="learning-intro">
+Curated beginner learning resources in Hindi and English.
+Choose a topic and language, then watch or open the lesson on YouTube.
+</p>
+
+<div class="learning-controls">
+<button class="filter-btn active" data-filter="all" aria-pressed="true">ALL VIDEOS</button>
+<button class="filter-btn" data-filter="Hindi" aria-pressed="false">HINDI</button>
+<button class="filter-btn" data-filter="English" aria-pressed="false">ENGLISH</button>
+</div>
+
+<div class="learning-controls">
+<button class="filter-btn active" data-topic="all" aria-pressed="true">ALL TOPICS</button>
+<button class="filter-btn" data-topic="Python" aria-pressed="false">PYTHON</button>
+<button class="filter-btn" data-topic="Linux" aria-pressed="false">LINUX</button>
+<button class="filter-btn" data-topic="Networking" aria-pressed="false">NETWORKING</button>
+<button class="filter-btn" data-topic="Cybersecurity" aria-pressed="false">CYBERSECURITY</button>
+<button class="filter-btn" data-topic="C++" aria-pressed="false">C++</button>
+<button class="filter-btn" data-topic="Electronics" aria-pressed="false">ELECTRONICS</button>
+</div>
+
+<div class="video-grid" id="videoGrid">
+
+<article class="video-card" data-language="Hindi" data-topic="Python">
+<div class="video-frame">
+<iframe src="https://www.youtube-nocookie.com/embed/7wnove7K-ZQ"
+title="Python Hindi beginner lesson" loading="lazy"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
+</div>
+<div class="video-info">
+<div class="video-meta"><span class="video-category">PROGRAMMING</span><span class="language-tag">HINDI</span></div>
+<h3>Python for Beginners</h3>
+<p>Start learning Python programming fundamentals.</p>
+<div class="video-actions"><a href="https://www.youtube.com/results?search_query=Python+course+Hindi+beginners" target="_blank" rel="noopener">MORE VIDEOS ↗</a></div>
+</div>
+</article>
+
+<article class="video-card" data-language="English" data-topic="Python">
+<div class="video-frame"><div class="video-placeholder"><div class="play">▶</div><span>PYTHON • ENGLISH</span></div></div>
+<div class="video-info">
+<div class="video-meta"><span class="video-category">PROGRAMMING</span><span class="language-tag">ENGLISH</span></div>
+<h3>Python Beginner Course</h3>
+<p>Learn variables, conditions, loops and basic programming.</p>
+<div class="video-actions"><a href="https://www.youtube.com/results?search_query=Python+beginner+full+course+English" target="_blank" rel="noopener">FIND LESSON ↗</a></div>
+</div>
+</article>
+
+<article class="video-card" data-language="Hindi" data-topic="Linux">
+<div class="video-frame">
+<iframe src="https://www.youtube-nocookie.com/embed/_tCY-c-sPZc"
+title="Linux Hindi beginner lesson" loading="lazy"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
+</div>
+<div class="video-info">
+<div class="video-meta"><span class="video-category">OPERATING SYSTEM</span><span class="language-tag">HINDI</span></div>
+<h3>Linux & Terminal Basics</h3>
+<p>Understand terminal commands, files and permissions.</p>
+<div class="video-actions"><a href="https://www.youtube.com/results?search_query=Linux+commands+Hindi+beginners" target="_blank" rel="noopener">MORE VIDEOS ↗</a></div>
+</div>
+</article>
+
+<article class="video-card" data-language="English" data-topic="Linux">
+<div class="video-frame"><div class="video-placeholder"><div class="play">▶</div><span>LINUX • ENGLISH</span></div></div>
+<div class="video-info">
+<div class="video-meta"><span class="video-category">OPERATING SYSTEM</span><span class="language-tag">ENGLISH</span></div>
+<h3>Linux Command Line</h3>
+<p>Learn essential Linux shell commands and file-system basics.</p>
+<div class="video-actions"><a href="https://www.youtube.com/results?search_query=Linux+command+line+beginner+English" target="_blank" rel="noopener">FIND LESSON ↗</a></div>
+</div>
+</article>
+
+<article class="video-card" data-language="Hindi" data-topic="Networking">
+<div class="video-frame"><div class="video-placeholder"><div class="play">▶</div><span>NETWORKING • HINDI</span></div></div>
+<div class="video-info">
+<div class="video-meta"><span class="video-category">NETWORK FUNDAMENTALS</span><span class="language-tag">HINDI</span></div>
+<h3>Computer Networking Basics</h3>
+<p>Learn IP addresses, DNS, routers, ports and protocols.</p>
+<div class="video-actions"><a href="https://www.youtube.com/results?search_query=computer+networking+Hindi+beginners" target="_blank" rel="noopener">FIND LESSON ↗</a></div>
+</div>
+</article>
+
+<article class="video-card" data-language="English" data-topic="Networking">
+<div class="video-frame"><div class="video-placeholder"><div class="play">▶</div><span>NETWORKING • ENGLISH</span></div></div>
+<div class="video-info">
+<div class="video-meta"><span class="video-category">NETWORK FUNDAMENTALS</span><span class="language-tag">ENGLISH</span></div>
+<h3>Networking Fundamentals</h3>
+<p>Explore network models, IP, DNS, routing and protocols.</p>
+<div class="video-actions"><a href="https://www.youtube.com/results?search_query=networking+fundamentals+beginner+English" target="_blank" rel="noopener">FIND LESSON ↗</a></div>
+</div>
+</article>
+
+<article class="video-card" data-language="Hindi" data-topic="Cybersecurity">
+<div class="video-frame"><div class="video-placeholder"><div class="play">▶</div><span>CYBERSECURITY • HINDI</span></div></div>
+<div class="video-info">
+<div class="video-meta"><span class="video-category">SECURITY FUNDAMENTALS</span><span class="language-tag">HINDI</span></div>
+<h3>Cybersecurity for Beginners</h3>
+<p>Understand security principles and safe online practices.</p>
+<div class="video-actions"><a href="https://www.youtube.com/results?search_query=cybersecurity+fundamentals+Hindi+beginners" target="_blank" rel="noopener">FIND LESSON ↗</a></div>
+</div>
+</article>
+
+<article class="video-card" data-language="English" data-topic="Cybersecurity">
+<div class="video-frame"><div class="video-placeholder"><div class="play">▶</div><span>CYBERSECURITY • ENGLISH</span></div></div>
+<div class="video-info">
+<div class="video-meta"><span class="video-category">SECURITY FUNDAMENTALS</span><span class="language-tag">ENGLISH</span></div>
+<h3>Cybersecurity Foundations</h3>
+<p>Study security concepts and practise in authorized labs.</p>
+<div class="video-actions"><a href="https://www.youtube.com/results?search_query=cybersecurity+fundamentals+beginner+English" target="_blank" rel="noopener">FIND LESSON ↗</a></div>
+</div>
+</article>
+
+<article class="video-card" data-language="Hindi" data-topic="C++">
+<div class="video-frame"><div class="video-placeholder"><div class="play">▶</div><span>C++ • HINDI</span></div></div>
+<div class="video-info">
+<div class="video-meta"><span class="video-category">PROGRAMMING</span><span class="language-tag">HINDI</span></div>
+<h3>C++ & OOP Basics</h3>
+<p>Learn syntax, functions, classes and objects.</p>
+<div class="video-actions"><a href="https://www.youtube.com/results?search_query=C%2B%2B+OOP+Hindi+beginners" target="_blank" rel="noopener">FIND LESSON ↗</a></div>
+</div>
+</article>
+
+<article class="video-card" data-language="English" data-topic="C++">
+<div class="video-frame"><div class="video-placeholder"><div class="play">▶</div><span>C++ • ENGLISH</span></div></div>
+<div class="video-info">
+<div class="video-meta"><span class="video-category">PROGRAMMING</span><span class="language-tag">ENGLISH</span></div>
+<h3>C++ Programming</h3>
+<p>Build a foundation in C++ and object-oriented concepts.</p>
+<div class="video-actions"><a href="https://www.youtube.com/results?search_query=C%2B%2B+beginner+full+course+English" target="_blank" rel="noopener">FIND LESSON ↗</a></div>
+</div>
+</article>
+
+<article class="video-card" data-language="Hindi" data-topic="Electronics">
+<div class="video-frame"><div class="video-placeholder"><div class="play">▶</div><span>ESP32 • HINDI</span></div></div>
+<div class="video-info">
+<div class="video-meta"><span class="video-category">IOT & ELECTRONICS</span><span class="language-tag">HINDI</span></div>
+<h3>ESP32 / IoT for Beginners</h3>
+<p>Introduction to microcontrollers, GPIO, sensors and IoT.</p>
+<div class="video-actions"><a href="https://www.youtube.com/results?search_query=ESP32+tutorial+Hindi+beginners" target="_blank" rel="noopener">FIND LESSON ↗</a></div>
+</div>
+</article>
+
+<article class="video-card" data-language="English" data-topic="Electronics">
+<div class="video-frame"><div class="video-placeholder"><div class="play">▶</div><span>ESP32 • ENGLISH</span></div></div>
+<div class="video-info">
+<div class="video-meta"><span class="video-category">IOT & ELECTRONICS</span><span class="language-tag">ENGLISH</span></div>
+<h3>ESP32 Getting Started</h3>
+<p>Learn board basics, programming and beginner electronics.</p>
+<div class="video-actions"><a href="https://www.youtube.com/results?search_query=ESP32+beginner+tutorial+English" target="_blank" rel="noopener">FIND LESSON ↗</a></div>
+</div>
+</article>
+
+</div>
+
+<div class="empty-state" id="emptyState">
+No videos match these filters. Try another topic or language.
+</div>
+
+<div class="video-note">
+Some selected lessons are embedded and can play here.
+Other cards open YouTube search results for the selected topic and language.
+Video creators retain ownership of their content.
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section class="content-section reveal" id="projects">
+<div class="section-label">04 / MY WORK</div>
+<h2 class="section-title">FEATURED <span class="green">PROJECTS</span></h2>
+
+<div class="projects-grid">
+
+<article class="project">
+<div class="project-top"><span>PROJECT_01</span><span>01 / LEARNING</span></div>
+<h3>Python Utility Tools</h3>
+<p>Beginner-friendly Python scripts for programming practice.</p>
+<div class="tags"><span>PYTHON</span><span>CLI</span><span>LEARNING</span></div>
+<a href="https://github.com/sunnyjangid1717-cmyk" target="_blank" rel="noopener">VIEW GITHUB ↗</a>
+</article>
+
+<article class="project">
+<div class="project-top"><span>PROJECT_02</span><span>02 / LAB</span></div>
+<h3>Linux Learning Lab</h3>
+<p>Linux commands, permissions and networking practice.</p>
+<div class="tags"><span>LINUX</span><span>NETWORKING</span><span>LAB</span></div>
+<a href="https://github.com/sunnyjangid1717-cmyk" target="_blank" rel="noopener">VIEW GITHUB ↗</a>
+</article>
+
+<article class="project">
+<div class="project-top"><span>PROJECT_03</span><span>03 / IOT</span></div>
+<h3>ESP8266 Experiments</h3>
+<p>Learning embedded systems and IoT concepts.</p>
+<div class="tags"><span>ESP8266</span><span>IOT</span><span>ELECTRONICS</span></div>
+<a href="https://github.com/sunnyjangid1717-cmyk" target="_blank" rel="noopener">VIEW GITHUB ↗</a>
+</article>
+
+<article class="project">
+<div class="project-top"><span>PROJECT_04</span><span>04 / WEB</span></div>
+<h3>Personal Portfolio</h3>
+<p>A responsive portfolio built with HTML, CSS and JavaScript.</p>
+<div class="tags"><span>HTML</span><span>CSS</span><span>JAVASCRIPT</span></div>
+<a href="#home">BACK TO TOP ↑</a>
+</article>
+
+</div>
+</section>
+
+<!-- JOURNEY -->
+<section class="content-section reveal" id="journey">
+<div class="section-label">05 / MY PROGRESS</div>
+<h2 class="section-title">LEARNING <span class="green">JOURNEY</span></h2>
+
+<div class="panel">
+<div class="journey">
+<div class="journey-item">
+<h3>Programming Foundations</h3>
+<p>Building a foundation in Python, C++ and logical problem solving.</p>
+</div>
+
+<div class="journey-item">
+<h3>Linux & Networking</h3>
+<p>Exploring Linux environments, command line and networking concepts.</p>
+</div>
+
+<div class="journey-item">
+<h3>Cybersecurity Practice</h3>
+<p>Studying security fundamentals and practising in authorized labs.</p>
+</div>
+
+<div class="journey-item">
+<h3>What's Next?</h3>
+<p>Build more projects, improve my skills and document what I learn.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="content-section reveal" id="contact">
+<div class="contact-box">
+<div class="section-label">06 / GET IN TOUCH</div>
+<h2 class="section-title">LET'S <span class="green">CONNECT</span></h2>
+
+<p>Interested in technology, development or learning together? Feel free to connect with me.</p>
+
+<div class="socials">
+<a href="https://github.com/sunnyjangid1717-cmyk" target="_blank" rel="noopener">GITHUB ↗</a>
+<a href="https://www.linkedin.com/" target="_blank" rel="noopener">LINKEDIN ↗</a>
+<a href="mailto:sunnyjangid1717@gmail.com">EMAIL ↗</a>
+</div>
+
+<div class="email-address">
+sunnyjangid1717@gmail.com
+</div>
+</div>
+</section>
+
+<footer>
+<p>© <span id="year"></span> <span>SUNNY JANGID</span> · Built with curiosity & code.</p>
+<p style="margin-top:8px">ETHICAL LEARNING. RESPONSIBLE BUILDING.</p>
+</footer>
+
+<script>
+/* TYPING ANIMATION */
+const words=[
+  "Cybersecurity Learner",
+  "Developer in Progress",
+  "Linux Explorer",
+  "Technology Enthusiast"
+];
+
+let wordIndex=0;
+let charIndex=0;
+let deleting=false;
+
+const typing=document.getElementById("typing");
+
+function typeEffect(){
+  const current=words[wordIndex];
+
+  charIndex+=deleting?-1:1;
+  typing.textContent=current.substring(0,charIndex);
+
+  let delay=deleting?45:90;
+
+  if(!deleting&&charIndex===current.length){
+    deleting=true;
+    delay=1300;
+  }else if(deleting&&charIndex===0){
+    deleting=false;
+    wordIndex=(wordIndex+1)%words.length;
+    delay=350;
+  }
+
+  setTimeout(typeEffect,delay);
+}
+
+if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+  typeEffect();
+}else{
+  typing.textContent=words[0];
+}
+
+/* MOBILE MENU */
+const menuBtn=document.getElementById("menuBtn");
+const navLinks=document.getElementById("navLinks");
+
+function closeMenu(){
+  navLinks.classList.remove("open");
+  menuBtn.setAttribute("aria-expanded","false");
+  menuBtn.setAttribute("aria-label","Open menu");
+  menuBtn.textContent="☰";
+}
+
+menuBtn.addEventListener("click",()=>{
+  const isOpen=navLinks.classList.toggle("open");
+
+  menuBtn.setAttribute("aria-expanded",String(isOpen));
+  menuBtn.setAttribute("aria-label",isOpen?"Close menu":"Open menu");
+  menuBtn.textContent=isOpen?"✕":"☰";
+});
+
+document.querySelectorAll(".nav-links a").forEach(link=>{
+  link.addEventListener("click",closeMenu);
+});
+
+document.addEventListener("click",event=>{
+  if(!navLinks.contains(event.target)&&!menuBtn.contains(event.target)){
+    closeMenu();
+  }
+});
+
+/* SCROLL REVEAL WITH FALLBACK */
+const revealElements=document.querySelectorAll(".reveal");
+
+if("IntersectionObserver" in window){
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.12});
+
+  revealElements.forEach(element=>{
+    observer.observe(element);
+  });
+}else{
+  revealElements.forEach(element=>{
+    element.classList.add("visible");
+  });
+}
+
+/* CURRENT YEAR */
+document.getElementById("year").textContent=new Date().getFullYear();
+
+/* LEARNING HUB FILTERS */
+let selectedLanguage="all";
+let selectedTopic="all";
+
+const cards=[...document.querySelectorAll(".video-card")];
+const emptyState=document.getElementById("emptyState");
+
+function applyFilters(){
+  let visible=0;
+
+  cards.forEach(card=>{
+    const languageMatch=
+      selectedLanguage==="all"||
+      card.dataset.language===selectedLanguage;
+
+    const topicMatch=
+      selectedTopic==="all"||
+      card.dataset.topic===selectedTopic;
+
+    const show=languageMatch&&topicMatch;
+
+    card.hidden=!show;
+
+    if(show)visible++;
+  });
+
+  emptyState.style.display=visible===0?"block":"none";
+}
+
+/* LANGUAGE FILTER */
+const languageButtons=document.querySelectorAll(
+  ".learning-controls button[data-filter]"
+);
+
+languageButtons.forEach(button=>{
+  button.addEventListener("click",()=>{
+    selectedLanguage=button.dataset.filter;
+
+    languageButtons.forEach(item=>{
+      const active=item===button;
+      item.classList.toggle("active",active);
+      item.setAttribute("aria-pressed",String(active));
+    });
+
+    applyFilters();
+  });
+});
+
+/* TOPIC FILTER */
+const topicButtons=document.querySelectorAll(
+  ".learning-controls button[data-topic]"
+);
+
+topicButtons.forEach(button=>{
+  button.addEventListener("click",()=>{
+    selectedTopic=button.dataset.topic;
+
+    topicButtons.forEach(item=>{
+      const active=item===button;
+      item.classList.toggle("active",active);
+      item.setAttribute("aria-pressed",String(active));
+    });
+
+    applyFilters();
+  });
+});
+</script>
+
+</body>
+</html>
